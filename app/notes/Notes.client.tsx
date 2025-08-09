@@ -1,4 +1,5 @@
-'use client'; 
+// Notes.client.tsx
+'use client';
 
 import { useQuery, keepPreviousData } from "@tanstack/react-query";
 import { fetchNotes, FetchNotesResponse } from "@/lib/api";
@@ -41,10 +42,10 @@ export default function NotesClient ({initialNotes}: Props) {
     if (!data) return <p>No notes found.</p>;
 
     return (
-    <div className={css.app}>
+    <div className={css.centeredContainer}> {}
       <header className={css.toolbar}>
         <SearchBox value={search} onChange={handleSearchCange} />
-       {data && data.total_pages > 1 && (
+        {data && data.total_pages > 1 && (
           <Pagination
             currentPage={page}
             totalPages={data.total_pages}
@@ -53,7 +54,7 @@ export default function NotesClient ({initialNotes}: Props) {
         )}
         <button className={css.button} type='button' onClick={() => setModalIsOpen(true)}>Create +</button>
       </header>
-       
+
       {isSuccess && data?.data?.length > 0 ? (
         <NoteList notes={data.data} isLoading={isLoading} />)
         : (
