@@ -7,10 +7,12 @@ export interface FetchNotesParams {
     search?: string;
 }
 
+
 export interface FetchNotesResponse {
     notes: Note[];
     totalPages: number;
 }
+
 
 export interface CreateNoteData {
     title: string;
@@ -26,6 +28,7 @@ function checkToken() {
     throw new Error('Access token is missing or empty. API calls will fail.');
   }
 }
+
 
 export async function fetchNotes(params: FetchNotesParams = {}): Promise<FetchNotesResponse> {
     checkToken();
